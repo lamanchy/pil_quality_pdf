@@ -2,9 +2,8 @@ import functools
 
 from PIL import ImageFont
 
+from pil_quality_pdf.quality_constants import FONT
 from .quality_constants import ANTIALIASING, RESOLUTION_DPI
-
-FONT = "fonts/DejaVuSansMono.ttf"
 
 
 @functools.lru_cache(None)

@@ -9,5 +9,9 @@ ANTIALIASING = 3
 RESAMPLE_WAY = Image.BILINEAR
 RESIZE_WAY = Image.NEAREST
 
-# RESOLUTION_DPI = 115
-# ANTIALIASING = 1
+FONT = "fonts/DejaVuSansMono.ttf"
+
+try:
+    from .local_quality_constants import *
+except ImportError:
+    pass
