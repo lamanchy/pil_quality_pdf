@@ -1,4 +1,4 @@
-from quality_constants import RESIZE_WAY, RESAMPLE_WAY
+from .quality_constants import RESIZE_WAY, RESAMPLE_WAY
 
 
 def rotate(img, angle, expand=True, center=None, translate=None, fillcolor=None):

@@ -2,7 +2,7 @@ import functools
 
 from PIL import ImageFont
 
-from quality_constants import ANTIALIASING, RESOLUTION_DPI
+from .quality_constants import ANTIALIASING, RESOLUTION_DPI
 
 FONT = "fonts/DejaVuSansMono.ttf"
 

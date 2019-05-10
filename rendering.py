@@ -4,7 +4,7 @@ import shutil
 import img2pdf
 from PIL import Image
 
-from quality_constants import ANTIALIASING, RESOLUTION_DPI
+from .quality_constants import ANTIALIASING, RESOLUTION_DPI
 
 
 def do_antialiasing(img):

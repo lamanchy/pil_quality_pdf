@@ -1,7 +1,7 @@
 from PIL import Image
 
-from quality_constants import ANTIALIASING
-from transformation import resize
+from .quality_constants import ANTIALIASING
+from .transformation import resize
 
 
 def apply_texture(image, texture):
