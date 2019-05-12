@@ -31,6 +31,7 @@ class PdfWriter(object):
 
         path = self.get_png_path(self.counter)
         self.counter += 1
+        print("Saving %s. page of file %s" % (self.counter, self.name))
         img.save(path, optimize=True, dpi=(RESOLUTION_DPI, RESOLUTION_DPI))
 
     def __enter__(self):
@@ -49,6 +50,8 @@ class PdfWriter(object):
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
+        if exc_val is not None:
+            return
         self.is_in = False
 
         images = [self.get_png_path(i) for i in range(self.counter)]
