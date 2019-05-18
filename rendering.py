@@ -11,6 +11,10 @@ def do_antialiasing(img):
     return img.resize((int(img.size[0] / ANTIALIASING), int(img.size[1] / ANTIALIASING)), Image.ANTIALIAS)
 
 
+def save(path, img):
+    img.save(path, optimize=True, dpi=(RESOLUTION_DPI, RESOLUTION_DPI))
+
+
 class PdfWriter(object):
     def __init__(self, name):
         self.name = name
