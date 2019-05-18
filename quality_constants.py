@@ -3,6 +3,9 @@ from PIL import Image
 RESAMPLE_WAY = Image.BILINEAR  # Image.BICUBIC
 RESIZE_WAY = Image.NEAREST  # Image.ANTIALIAS
 
+RESOLUTION_DPI = 300
+ANTIALIASING = 3
+
 FONT = "fonts/DejaVuSansMono.ttf"
 
 try:
