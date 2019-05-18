@@ -10,7 +10,7 @@ from .quality_constants import ANTIALIASING, RESOLUTION_DPI
 def do_antialiasing(img):
   if ANTIALIASING == 1:
     return img
-    return img.resize((int(img.size[0] / ANTIALIASING), int(img.size[1] / ANTIALIASING)), Image.ANTIALIAS)
+  return img.resize((int(img.size[0] / ANTIALIASING), int(img.size[1] / ANTIALIASING)), Image.ANTIALIAS)
 
 
 def save(path, img):
