@@ -9,10 +9,11 @@ from .quality_constants import ANTIALIASING, RESOLUTION_DPI
 
 @functools.lru_cache(None)
 def get_font(size, font=FONT):
+    size = int(size * RESOLUTION_DPI * ANTIALIASING // 100)
     try:
-        return ImageFont.truetype(font, size=size * RESOLUTION_DPI * ANTIALIASING // 100)
+        return ImageFont.truetype(font, size=size)
     except OSError:
-        return ImageFont.truetype(FONT, size=size * RESOLUTION_DPI * ANTIALIASING // 100)
+        return ImageFont.truetype(FONT, size=size)
 
 
 def get_max_font_size(draw, text, max_width, max_height, max_font_size, min_font_size=1):
