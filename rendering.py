@@ -1,5 +1,6 @@
 import os
 import shutil
+from datetime import datetime
 
 import img2pdf
 from PIL import Image
@@ -37,7 +38,7 @@ class PdfWriter(object):
 
         path = self.get_png_path(self.counter)
         self.counter += 1
-        print("Saving %s. page of file %s" % (self.counter, self.name))
+        print(datetime.now(), "Saving %s. page of file %s" % (self.counter, self.name))
         img.save(path, optimize=True, dpi=(RESOLUTION_DPI, RESOLUTION_DPI))
 
     def __enter__(self):
