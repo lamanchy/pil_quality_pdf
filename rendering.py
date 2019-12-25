@@ -28,7 +28,7 @@ class PdfWriter(object):
         return self.name + "_dir"
 
     def get_png_path(self, i):
-        return os.path.join(self.dirname(), self.name + str(i) + ".png")
+        return os.path.join(self.dirname(), f"{i:09}" + ".png")
 
     def write(self, img):
         if not self.is_in:
