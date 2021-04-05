@@ -1,4 +1,5 @@
 import functools
+import os
 
 from PIL import ImageFont
 
@@ -6,14 +7,15 @@ from pil_quality_pdf.quality_constants import FONT
 from pil_quality_pdf.rendering import mm_to_px
 from .quality_constants import ANTIALIASING, RESOLUTION_DPI
 
+import pathlib
 
 @functools.lru_cache(None)
 def get_font(size, font=FONT):
     size = int(size * RESOLUTION_DPI * ANTIALIASING // 100)
     try:
-        return ImageFont.truetype(font, size=size)
+        return ImageFont.truetype(os.path.join(pathlib.Path(__file__).parent.absolute(), font), size=size)
     except OSError:
-        return ImageFont.truetype(FONT, size=size)
+        return ImageFont.truetype(os.path.join(pathlib.Path(__file__).parent.absolute(), FONT), size=size)
 
 
 def get_max_font_size(draw, text, max_width, max_height, max_font_size, min_font_size=1):
