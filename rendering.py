@@ -39,7 +39,7 @@ class PdfWriter(object):
 
         path = self.get_png_path(self.counter)
         self.counter += 1
-        print(datetime.now(), "Saving %s. page of file %s" % (self.counter, self.name))
+        # print(datetime.now(), "Saving %s. page of file %s" % (self.counter, self.name))
         img.save(path, optimize=True, dpi=(RESOLUTION_DPI, RESOLUTION_DPI))
 
     def __enter__(self):
