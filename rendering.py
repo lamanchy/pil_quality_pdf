@@ -1,6 +1,7 @@
 import os
 import shutil
 from datetime import datetime
+from pathlib import Path
 
 import img2pdf
 from PIL import Image
@@ -9,9 +10,9 @@ from .quality_constants import ANTIALIASING, RESOLUTION_DPI
 
 
 def do_antialiasing(img):
-  if ANTIALIASING == 1:
-    return img
-  return img.resize((int(img.size[0] / ANTIALIASING), int(img.size[1] / ANTIALIASING)), Image.ANTIALIAS)
+    if ANTIALIASING == 1:
+        return img
+    return img.resize((int(img.size[0] / ANTIALIASING), int(img.size[1] / ANTIALIASING)), Image.ANTIALIAS)
 
 
 def save(path, img):
@@ -25,7 +26,7 @@ class PdfWriter(object):
         self.counter = 0
 
     def dirname(self):
-        return self.name + "_dir"
+        return Path('pdf_writer') / f"{self.name}_dir"
 
     def get_png_path(self, i):
         return os.path.join(self.dirname(), f"{i:09}" + ".png")
@@ -48,7 +49,7 @@ class PdfWriter(object):
             shutil.rmtree(self.dirname(), ignore_errors=True)
         except FileNotFoundError:
             pass
-        os.mkdir(self.dirname())
+        self.dirname().mkdir(parents=True)
         try:
             os.remove(self.name + ".pdf")
         except FileNotFoundError:
@@ -64,7 +65,9 @@ class PdfWriter(object):
         images = [self.get_png_path(i) for i in range(self.counter)]
 
         if len(images):
-            with open(self.name + ".pdf", "wb") as f:
+            path = Path('pdfs')
+            path.mkdir(parents=True, exist_ok=True)
+            with open(path / (self.name + ".pdf"), "wb") as f:
                 f.write(img2pdf.convert(images))
 
 
